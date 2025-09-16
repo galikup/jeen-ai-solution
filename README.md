@@ -128,53 +128,64 @@ The project shows how medical content can be indexed and searched intelligently.
 Example 1
 Enter your query: What are the best practices to prevent type 2 diabetes?
 
-
 Output:
 
 === TOP RESULTS ===
-[1] doc_01.pdf | paragraph_based | score=0.7961
+[1] doc_01.pdf | paragraph_based | score=0.7961  
 Type 2 Diabetes Prevention [...]
-[2] doc_06.pdf | paragraph_based | score=0.5802
+
+[2] doc_06.pdf | paragraph_based | score=0.5802  
 Heart Failure Prevention [...]
-[3] doc_16.pdf | paragraph_based | score=0.5766
+
+[3] doc_16.pdf | paragraph_based | score=0.5766  
 Obesity and Weight Management [...]
-[4] doc_08.pdf | paragraph_based | score=0.5693
+
+[4] doc_08.pdf | paragraph_based | score=0.5693  
 Osteoporosis Prevention [...]
-[5] doc_20.pdf | paragraph_based | score=0.5626
+
+[5] doc_20.pdf | paragraph_based | score=0.5626  
 Cardiovascular Risk Reduction [...]
+
 
 Example 2
 Enter your query: How can I reduce my risk of developing heart failure?
 
-
 Output:
 
 === TOP RESULTS ===
-[1] doc_06.pdf | paragraph_based | score=0.7619
+[1] doc_06.pdf | paragraph_based | score=0.7619  
 Heart Failure Prevention [...]
-[2] doc_20.pdf | paragraph_based | score=0.6171
+
+[2] doc_20.pdf | paragraph_based | score=0.6171  
 Cardiovascular Risk Reduction [...]
-[3] doc_01.pdf | paragraph_based | score=0.5438
+
+[3] doc_01.pdf | paragraph_based | score=0.5438  
 Type 2 Diabetes Prevention [...]
-[4] doc_02.pdf | paragraph_based | score=0.5399
+
+[4] doc_02.pdf | paragraph_based | score=0.5399  
 Hypertension Management [...]
-[5] doc_05.pdf | paragraph_based | score=0.5383
+
+[5] doc_05.pdf | paragraph_based | score=0.5383  
 Chronic Obstructive Pulmonary Disease (COPD) [...]
+
 
 Example 3
 Enter your query: What are the early warning signs of heart disease?
 
-
 Output:
 
 === TOP RESULTS ===
-[1] doc_06.pdf | paragraph_based | score=0.5303
+[1] doc_06.pdf | paragraph_based | score=0.5303  
 Heart Failure Prevention [...]
-[2] doc_20.pdf | paragraph_based | score=0.5235
+
+[2] doc_20.pdf | paragraph_based | score=0.5235  
 Cardiovascular Risk Reduction [...]
-[3] doc_03.pdf | paragraph_based | score=0.4786
+
+[3] doc_03.pdf | paragraph_based | score=0.4786  
 Cholesterol Control [...]
-[4] doc_01.pdf | paragraph_based | score=0.4423
+
+[4] doc_01.pdf | paragraph_based | score=0.4423  
 Type 2 Diabetes Prevention [...]
-[5] doc_17.pdf | paragraph_based | score=0.4349
+
+[5] doc_17.pdf | paragraph_based | score=0.4349  
 Cancer Screening Awareness [...]
