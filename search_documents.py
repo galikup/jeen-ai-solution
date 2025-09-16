@@ -74,7 +74,17 @@ def top_k(query: str, k: int = 5):
     for r in rows:
         r["score"] = cosine(q, r["embedding"])
     rows.sort(key=lambda x: x["score"], reverse=True)
+    rows = get_unique_dicts(rows)
     return rows[:k]
+
+def get_unique_dicts(rows):
+    seen = set()
+    unique_dicts = []
+    for d in rows:
+        if d["filename"] not in seen:
+            unique_dicts.append(d)
+            seen.add(d["filename"])
+    return unique_dicts
 
 if __name__=="__main__":
     query = input("Enter your query: ")
