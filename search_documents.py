@@ -1,8 +1,5 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-
-import os, sys, argparse, textwrap
-import psycopg2, numpy as np
+# -- coding: utf-8 --
 
 import os, sys, argparse, textwrap
 import psycopg2, numpy as np
@@ -10,12 +7,7 @@ from dotenv import load_dotenv
 import google.generativeai as genai
 
 # ---- init ----
-# ---- init ----
 load_dotenv()
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
-POSTGRES_URL   = os.getenv("POSTGRES_URL")
-assert GEMINI_API_KEY, "Missing GEMINI_API_KEY in .env"
-assert POSTGRES_URL,   "Missing POSTGRES_URL in .env"
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 POSTGRES_URL   = os.getenv("POSTGRES_URL")
 assert GEMINI_API_KEY, "Missing GEMINI_API_KEY in .env"
@@ -23,30 +15,22 @@ assert POSTGRES_URL,   "Missing POSTGRES_URL in .env"
 
 genai.configure(api_key=GEMINI_API_KEY)
 
-
 EMBED_MODEL = "models/text-embedding-004"
 GEN_MODEL   = "models/gemini-2.0-flash"
 EMBED_DIM   = 768  # text-embedding-004
-EMBED_DIM   = 768  # text-embedding-004
 
-# ---- embeddings ----
 # ---- embeddings ----
 def embed(text: str) -> np.ndarray:
     resp = genai.embed_content(model=EMBED_MODEL, content=text)
     # Supports several possible formats:
     if isinstance(resp, dict) and "embedding" in resp:
         vec = resp["embedding"]
-        vec = resp["embedding"]
     elif isinstance(resp, dict) and "embeddings" in resp:
-        vec = resp["embeddings"][0]["values"]
-    elif isinstance(resp, list):
-        vec = resp[0]["embedding"]["values"]
         vec = resp["embeddings"][0]["values"]
     elif isinstance(resp, list):
         vec = resp[0]["embedding"]["values"]
     else:
         raise ValueError(f"Unexpected embedding response: {type(resp)} -> {resp}")
-    v = np.asarray(vec, dtype=np.float64).ravel()
     v = np.asarray(vec, dtype=np.float64).ravel()
     if v.shape[0] != EMBED_DIM:
         raise ValueError(f"Bad embedding length: {v.shape[0]} (expected {EMBED_DIM})")
@@ -58,7 +42,6 @@ def cosine(a, b) -> float:
     denom = np.linalg.norm(a) * np.linalg.norm(b)
     return float(np.dot(a, b) / denom) if denom else 0.0
 
-# ---- DB ----
 # ---- DB ----
 def fetch_chunks():
     sql = "SELECT id, filename, split_strategy, chunk_text, embedding FROM chunks"
@@ -77,14 +60,10 @@ def fetch_chunks():
             "split_strategy": strat,
             "chunk_text": text,
             "embedding": vec
-            "embedding": vec
         })
     return out
 
 # ---- retrieval ----
-def top_k(query: str, k: int = 5, max_per_file: int = 2):
-    q = embed(query)
-    rows = fetch_chunks()
 def top_k(query: str, k: int = 5, max_per_file: int = 2):
     q = embed(query)
     rows = fetch_chunks()
@@ -163,17 +142,5 @@ def main():
         except Exception as e:
             print(f"(LLM error) {e}")
 
-if __name__ == "__main__":
-    main()
-        print(snippet)
-        print("-" * 70)
-
-    if args.answer:
-        print("\n=== SYNTHESIZED ANSWER ===\n")
-        try:
-            print(llm_answer(query, hits))
-        except Exception as e:
-            print(f"(LLM error) {e}")
-
-if __name__ == "__main__":
+if __name__ == "_main_":
     main()
